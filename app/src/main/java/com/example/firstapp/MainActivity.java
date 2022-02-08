@@ -2,6 +2,7 @@ package com.example.firstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -27,11 +28,18 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
 
     public void onFocusChange(View view,boolean focus) {
 
+
         if(focus){
             Toast.makeText(this,"focus",Toast.LENGTH_SHORT).show();
         }
         else{
             Toast.makeText(this,"lost focus",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void EventHandler(View view) {
+       //String value = nameText.getText().toString();
+       Intent varIntent = new Intent(this,homeActivity.class);
+       startActivity(varIntent);
     }
 }
