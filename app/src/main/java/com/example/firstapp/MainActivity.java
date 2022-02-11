@@ -23,6 +23,14 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
 
     public void toastName(View view) {
         Toast.makeText(this,nameText.getText().toString(),Toast.LENGTH_SHORT).show();
+        add(10,20);
+    }
+
+    private void add(int k, int i1) {
+        int c = 110;
+        for (int i = 0; i <10 ; i++) {
+            c = c+ i * 20 + 5;
+        }
     }
 
 
@@ -42,4 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
        Intent varIntent = new Intent(this,homeActivity.class);
        startActivity(varIntent);
     }
+
+
 }
