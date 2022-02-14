@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.firstapp">
+
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
@@ -11,14 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Firstapp">
         <activity
+            android:name=".EspressoPractical"
+            android:exported="true" />
+        <activity
+            android:name=".EspresssoActivivity"
+            android:exported="true" />
+        <activity
             android:name=".homeActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivity"/>
-       </activity>
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

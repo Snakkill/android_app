@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
 
     public void EventHandler(View view) {
        //String value = nameText.getText().toString();
-       Intent varIntent = new Intent(this,homeActivity.class);
+       Intent varIntent = new Intent(this,EspressoPractical.class);
        startActivity(varIntent);
     }
 
