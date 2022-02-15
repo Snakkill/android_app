@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.firstapp">
-
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
@@ -11,6 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Firstapp">
+        <receiver
+            android:name=".SMS"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"></action>
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".EspressoPractical"
             android:exported="true" />
