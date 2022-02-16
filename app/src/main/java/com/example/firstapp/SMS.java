@@ -33,6 +33,13 @@ public class SMS extends BroadcastReceiver {
                         String msgBody = msgs[i].getMessageBody();
 
 
+                        //start new intent and pass data
+                        Intent messageScreen = new Intent();
+                        messageScreen.setClassName("com.example.firstapp","com.example.firstapp.SpeechToText");
+                        messageScreen.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        messageScreen.putExtra("text",msgBody);
+                        context.startActivity(messageScreen);
+
 
                         Log.d(TAG, msgBody);
                     }
@@ -41,6 +48,7 @@ public class SMS extends BroadcastReceiver {
                 }
             }
         }
+
     }
 }
 
