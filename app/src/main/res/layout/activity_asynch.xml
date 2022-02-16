@@ -6,26 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".AsynchActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="249dp"
-        android:layout_height="154dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginBottom="63dp"
-        app:layout_constraintBottom_toTopOf="@+id/download"
-        app:layout_constraintStart_toStartOf="@+id/download"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/download"
         android:layout_width="235dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="88dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="371dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="122dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toTopOf="@+id/download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
