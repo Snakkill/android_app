@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Firstapp">
         <activity
+            android:name=".AsynchActivity"
+            android:exported="true" />
+        <activity
             android:name=".SpeechToText"
             android:exported="true" />
 

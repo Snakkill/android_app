@@ -52,4 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     }
 
 
+    public void DownloadIntent(View view) {
+        Intent varIntent = new Intent(this,AsynchActivity.class);
+        startActivity(varIntent);
+    }
 }
