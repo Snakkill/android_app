@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ProgressBar;
 
 public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
@@ -20,10 +21,14 @@ public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
 
+
+
+    }
+
+    public void StartDoInBackground(View view) {
+
         DownloadTask downloadTask = new DownloadTask(progressBar);
         downloadTask.execute("http://youtube.com/movie");
-
-
     }
 
     public static class DownloadTask extends AsyncTask<String,Integer,Void> {
@@ -40,7 +45,16 @@ public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... url) {
             Log.i(TAG,"downloading movie from the url"+ url[0]);
-            publishProgress(5);
+            for (int i=0;i<100;i++){
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                publishProgress(i);
+                i=i+10;
+            }
+
             return null;
         }
 
