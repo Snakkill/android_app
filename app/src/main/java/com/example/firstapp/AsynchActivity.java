@@ -63,5 +63,17 @@ public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
             super.onProgressUpdate(values);
             myProgressBar.setProgress(values[0]);
         }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            myProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            super.onPostExecute(unused);
+            myProgressBar.setVisibility(View.INVISIBLE);
+        }
     }
 }
