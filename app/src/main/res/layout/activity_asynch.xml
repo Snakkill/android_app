@@ -11,8 +11,8 @@
         android:layout_width="235dp"
         android:layout_height="0dp"
         android:layout_marginBottom="371dp"
-        android:text="Button"
         android:onClick="StartDoInBackground"
+        android:text="Click To Download"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,16 +20,28 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:visibility="invisible"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="122dp"
         android:layout_marginEnd="7dp"
-        android:layout_marginBottom="92dp"
-        app:layout_constraintBottom_toTopOf="@+id/download"
+        android:layout_marginBottom="248dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/alertBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/alertBtn"
+        android:onClick="showNotification"
+        android:layout_width="196dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="205dp"
+        android:text="Set Alert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

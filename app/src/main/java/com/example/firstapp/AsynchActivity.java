@@ -1,8 +1,13 @@
 package com.example.firstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +29,45 @@ public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
 
 
     }
+    //------------------------Notifications practical--------------------------------------//
+
+    private void createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Ayman's Channel";
+            String description = "First App's Notifcation channel";
+
+            // set importance to high
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+
+            //gave channel id of Channel1
+            NotificationChannel channel = new NotificationChannel("Channel1", name, importance);
+            channel.setDescription(description);
+
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    public void showNotification(View view) {
+        createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "Channel1")
+                .setSmallIcon(R.drawable.happy_icon)
+                .setContentTitle("The App Is Giving an Alert!")
+                .setContentText("This is the first alert I have ever made")
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText("I am happy to be here!"))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(007, builder.build());
+
+    }
+
+
+    //-------------------------------------------------------------------------------------//
 
     public void StartDoInBackground(View view) {
 
