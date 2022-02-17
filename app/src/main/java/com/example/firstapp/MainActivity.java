@@ -1,15 +1,22 @@
 package com.example.firstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class MainActivity extends AppCompatActivity implements View.OnFocusChangeListener {
     EditText nameText;
+    String TAG = MainActivity.class.getSimpleName();
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +26,15 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
         nameText = findViewById(R.id.etName);
         nameText.setOnFocusChangeListener(this);
 
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(
+                new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        String token = task.getResult().toString();
+                        Log.i(TAG,"token is------"+token);
+                    }
+                }
+        );
     }
 
     public void toastName(View view) {

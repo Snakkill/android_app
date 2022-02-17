@@ -3,4 +3,5 @@
     <string name="enter_Name">enter name</string>
     <string name="enter_Pass">enter password</string>
     <string name="Login_button">login</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
