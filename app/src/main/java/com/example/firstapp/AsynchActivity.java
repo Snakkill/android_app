@@ -6,6 +6,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -73,6 +74,21 @@ public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
 
         DownloadTask downloadTask = new DownloadTask(progressBar);
         downloadTask.execute("http://youtube.com/movie");
+    }
+
+    public void ServiceHandler(View view) {
+        Intent serviceIntent = new Intent(this,MyService.class);
+        switch(view.getId()){
+
+            case R.id.stServicebtn:
+                startService(serviceIntent);
+                break;
+
+
+            case R.id.stpServicebtn:
+                stopService(serviceIntent);
+                break;
+        }
     }
 
     public static class DownloadTask extends AsyncTask<String,Integer,Void> {
