@@ -10,24 +10,26 @@
         android:id="@+id/download"
         android:layout_width="235dp"
         android:layout_height="0dp"
+        android:layout_marginTop="227dp"
         android:layout_marginBottom="88dp"
         android:onClick="StartDoInBackground"
         android:text="Click To Download"
         app:layout_constraintBottom_toTopOf="@+id/alertBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="106dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="122dp"
         android:layout_marginEnd="6dp"
+        android:layout_marginBottom="105dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/download"
+        app:layout_constraintBottom_toBottomOf="@+id/download"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +39,7 @@
         android:layout_width="196dp"
         android:layout_height="0dp"
         android:layout_marginEnd="96dp"
-        android:layout_marginBottom="82dp"
+        android:layout_marginBottom="81dp"
         android:onClick="showNotification"
         android:text="Set Alert"
         app:layout_constraintBottom_toTopOf="@+id/stpServicebtn"
@@ -50,23 +52,35 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:layout_marginEnd="26dp"
-        android:text="Start Service"
+        android:layout_marginBottom="22dp"
         android:onClick="ServiceHandler"
-        app:layout_constraintBottom_toBottomOf="@+id/stpServicebtn"
+        android:text="Start Service"
+        app:layout_constraintBottom_toTopOf="@+id/btnBind"
         app:layout_constraintEnd_toStartOf="@+id/stpServicebtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/stpServicebtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/stpServicebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
-        android:text="Stop Service"
+        android:layout_marginBottom="22dp"
         android:onClick="ServiceHandler"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Stop Service"
+        app:layout_constraintBottom_toTopOf="@+id/btnBind"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/stServicebtn"
         app:layout_constraintTop_toBottomOf="@+id/alertBtn" />
+
+    <Button
+        android:id="@+id/btnBind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Bind"
+        android:onClick="ServiceHandler"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stpServicebtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

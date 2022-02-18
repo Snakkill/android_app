@@ -6,16 +6,19 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
 public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
-
+    String TAG=AsynchActivity.class.getSimpleName();
     ProgressBar progressBar;
 
 
@@ -88,8 +91,29 @@ public class AsynchActivity<S, I extends Number, V> extends AppCompatActivity {
             case R.id.stpServicebtn:
                 stopService(serviceIntent);
                 break;
+
+            case R.id.btnBind:
+                Intent bIntent = new Intent(this,MyService.class);
+                bindService(bIntent,serviceConnection,BIND_AUTO_CREATE);
+                break;
         }
     }
+    MyService myService;
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            MyService.LocalBinder localBinder = (MyService.LocalBinder) iBinder;
+            myService=localBinder.getService();
+            Log.i(TAG,myService.getScore());
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
+
 
     public static class DownloadTask extends AsyncTask<String,Integer,Void> {
         public  static  String TAG =  AsynchActivity.class.getSimpleName();
