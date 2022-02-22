@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -71,5 +72,39 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     public void DownloadIntent(View view) {
         Intent varIntent = new Intent(this,AsynchActivity.class);
         startActivity(varIntent);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveData();
+
+    }
+
+    private void saveData() {
+       String name= nameText.getText().toString();
+
+        SharedPreferences preferences = getSharedPreferences("Save_File_1",MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString("name_of_user",name);
+        editor.apply();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        restoreData();
+    }
+
+    private void restoreData() {
+        //open the file
+        SharedPreferences preferences = getSharedPreferences("Save_File_1",MODE_PRIVATE);
+        //read from the file
+        String dataRead = preferences.getString("name_of_user","");
+        //set the data into the edittext
+        nameText.setText(dataRead);
     }
 }
